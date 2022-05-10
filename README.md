@@ -1,2 +1,2 @@
 # RPEC_BuscaBinaria
-Implementação de Busca Binária no JAVA
+Implementação de dois algoritmos de pesquisa binária, a busca binária e a árvore binária
