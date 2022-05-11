@@ -4,35 +4,49 @@ public class BuscaBinaria {
     
     public static boolean exists(int[] list, int value){
 
-        System.out.println("Tamanho: "+list.length);
+        int middle = list.length/2;
 
-        // esse middle nn rola, soma do begin até o meio, faz a média e manda -1 (se impar?)
-        int middle = (int)((list.length -1)/2);
-
-        System.out.println("middle: "+middle);
-
-        int begin = 0;
-        int end = middle;
-
-        if(middle < 0){
+        print(list);
+        if(list.length == 1){
+            if(list[0] == value){
+                return true;
+            }
             return false;
         }
 
-        if(value == list[middle]){
-            return true;
-        }else{
-            if(list[middle] < value){
-                System.out.printf("valor %d MAIOR que %d\n", value, list[middle]);
-                begin = middle;
-                end = list.length - 1;
-                System.out.printf("begin %d, end %d\n\n", begin, end);
-            }
-            if(exists(Arrays.copyOfRange(list, begin, end), value)){
+        if(list[middle] != value){
+            if(exists(split(list, value<list[middle]), value)){
                 return true;
             }
+        }else{
+            return true;
         }
-
         return false;
+
+    }
+
+    private static int[] split(int[] list, boolean beginning){
+        int fromIndex = 0;
+        int toIndex = 0;
+        if(beginning){
+            fromIndex = 0;
+            toIndex = list.length/2;
+        }else{
+            fromIndex = list.length/2;
+            toIndex = list.length;
+        }
+        return Arrays.copyOfRange(list, fromIndex, toIndex);
+    }
+
+    private static void print(int[] list) {
+        System.out.print('[');
+        for(int i: list){
+            System.out.print(i);
+            if(i != list[list.length-1]){
+                System.out.print(", ");
+            }
+        }
+        System.out.println(']');
     }
 
 }
