@@ -6,7 +6,6 @@ public class BuscaBinaria {
 
         int middle = list.length/2;
 
-        print(list);
         if(list.length == 1){
             if(list[0] == value){
                 return true;
@@ -25,10 +24,33 @@ public class BuscaBinaria {
 
     }
 
-    private static int[] split(int[] list, boolean beginning){
+    public static int indexOf(int value, int[] list){
+        int index = 0;
+        return indexOf(value, list, index);
+    }
+
+    private static int indexOf(int value, int[] list, int index){
+        if(!exists(list, value)){
+            return -1;
+        }
+
+        int middle = list.length/2;
+        index += list.length/2;
+
+        System.out.printf("i: %d, mid: %d\n",index, list[middle]);
+        print(list);
+
+        if(list[middle] != value){
+            return indexOf(value, split(list, value<list[middle]), index);
+        }else{
+            return index;
+        }
+    }
+
+    private static int[] split(int[] list, boolean getBeginning){
         int fromIndex = 0;
         int toIndex = 0;
-        if(beginning){
+        if(getBeginning){
             fromIndex = 0;
             toIndex = list.length/2;
         }else{

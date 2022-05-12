@@ -10,6 +10,8 @@ public class App {
             System.out.println("Não!");
         }
 
+        System.out.println(BuscaBinaria.indexOf(0, list));
+
     }
 
 }
