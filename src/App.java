@@ -2,15 +2,11 @@ public class App {
 
     public static void main(String[] args) {
 
-        int[] list = {0, 1, 4, 5, 6, 7, 9};
+        int[] list = {0, 2, 4, 5, 6, 7, 9};
+        int value = 2;
+        int foundIndex = BuscaBinaria.indexOf(value, list);
 
-        if(BuscaBinaria.exists(list, 5)){
-            System.out.println("Sim!");
-        }else{
-            System.out.println("Não!");
-        }
-
-        System.out.println(BuscaBinaria.indexOf(0, list));
+        System.out.printf("Value searched: %d, list[%d]=%d", value, foundIndex, list[foundIndex]);
 
     }
 
