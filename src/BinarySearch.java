@@ -66,15 +66,17 @@ public class BinarySearch {
         return Arrays.copyOfRange(list, fromIndex, toIndex);
     }
 
-    // private static void print(int[] list) {
-    //     System.out.print('[');
-    //     for(int i: list){
-    //         System.out.print(i);
-    //         if(i != list[list.length-1]){
-    //             System.out.print(", ");
-    //         }
-    //     }
-    //     System.out.println(']');
-    // }
+    public static void print(int[] list) {
+        int cont = 0;
+        System.out.print('[');
+        for(int i: list){
+            System.out.print(i);
+            if(cont+1 != list.length){
+                System.out.print(", ");
+            }
+            cont++;
+        }
+        System.out.println(']');
+    }
 
 }
