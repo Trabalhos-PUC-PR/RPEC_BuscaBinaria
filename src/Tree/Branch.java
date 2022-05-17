@@ -26,28 +26,19 @@ public class Branch{
         rightBranch = null;
     }
 
-    public Branch getLeftBranch() {
+    private Branch getLeftBranch() {
         return leftBranch;
     }
 
-    public void setLeftBranch(Branch leftBranch) {
+    private void setLeftBranch(Branch leftBranch) {
         this.leftBranch = leftBranch;
     }
 
-    public Branch getRightBranch() {
+    private Branch getRightBranch() {
         return rightBranch;
     }
 
-    public Branch getRightMostBranch(){
-        Branch aux = new Branch();
-        aux = rightBranch;
-        while(aux.getRightBranch() != null){
-            aux = aux.getRightBranch();
-        } 
-        return aux;
-    }
-    
-    public void setRightBranch(Branch rightBranch) {
+    private void setRightBranch(Branch rightBranch) {
         this.rightBranch = rightBranch;
     }
 
@@ -58,11 +49,41 @@ public class Branch{
     public void setValue(Integer value) {
         this.value = value;
     }
-    
+
+    public Branch getNextBranch(int value) {
+        if(this.value < value){
+            return getRightBranch();
+        }
+        return getLeftBranch();
+    }
+
+    public void setNextBranch(int value) {
+        if(this.value < value){
+            setRightBranch(new Branch(value));
+        }else{
+            setLeftBranch(new Branch(value));
+        }
+    }
+
+    public Branch getFullRightBranch(){
+        Branch aux = rightBranch;
+        while(aux.getRightBranch() != null){
+            aux = aux.getRightBranch();
+        }
+        return aux;
+    }
+
+    public Branch getFullLeftBranch(){
+        Branch aux = leftBranch;
+        while(aux.getLeftBranch() != null){
+            aux = aux.getLeftBranch();
+        }
+        return aux;
+    }
+
     @Override
     public String toString() {
         String s = (""+value);
         return s;
     }
-
 }
