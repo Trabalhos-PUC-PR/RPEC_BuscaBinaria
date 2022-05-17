@@ -3,13 +3,13 @@ import Tree.BinaryTree;
 public class App {
     public static void main(String[] args) {
 
-        int[] list = {0, 2, 4, 5, 6, 7, 9};
-        int value = 7;
-        int foundIndex = BinarySearch.indexOf(value, list);
+        //int[] list = {0, 2, 4, 5, 6, 7, 9};
+        //int value = 7;
+        //int foundIndex = BinarySearch.indexOf(value, list);
 
         // System.out.printf("Value searched: %d, list[%d]=%d", value, foundIndex, list[foundIndex]);
 
-        int listSize = 10;
+        //int listSize = 10;
         // int[] treeList = new int[listSize];
         // for(int i = 0; i<listSize; i++){
         //     treeList[i] = (int)(Math.random()*100);
@@ -22,7 +22,8 @@ public class App {
         int[] i = {1, 100};
         tree.add(i);
         tree.removeBiggestElement();
-        tree.removeLowestElement();
+        tree.removeBiggestElement();
+        tree.removeBiggestElement();
 
     }
 

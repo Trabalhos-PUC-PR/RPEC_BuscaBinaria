@@ -1,7 +1,12 @@
 package Tree;
 
 public class Branch{
-    
+
+    /**
+     * Pointer to root branch
+     */
+    Branch root;
+
     /**
      * Pointer to next branch, where the value is less than root value
      */
@@ -18,27 +23,37 @@ public class Branch{
         this.value = value;
         leftBranch = null;
         rightBranch = null;
+        root = null;
     }
 
     public Branch(){
         value = null;
         leftBranch = null;
         rightBranch = null;
+        root = null;
     }
 
-    private Branch getLeftBranch() {
+    public Branch getRoot() {
+        return root;
+    }
+
+    public void setRoot(Branch root) {
+        this.root = root;
+    }
+
+    public Branch getLeftBranch() {
         return leftBranch;
     }
 
-    private void setLeftBranch(Branch leftBranch) {
+    public void setLeftBranch(Branch leftBranch) {
         this.leftBranch = leftBranch;
     }
 
-    private Branch getRightBranch() {
+    public Branch getRightBranch() {
         return rightBranch;
     }
 
-    private void setRightBranch(Branch rightBranch) {
+    public void setRightBranch(Branch rightBranch) {
         this.rightBranch = rightBranch;
     }
 
@@ -65,6 +80,18 @@ public class Branch{
         }
     }
 
+    public void setNextBranch(int value, Object nullBranch) {
+        if(this.value < value){
+            setRightBranch(null);
+        }else{
+            setLeftBranch(null);
+        }
+    }
+
+    public void setThisBranch(int value){
+        this.value = value;
+    }
+
     public Branch getFullRightBranch(){
         Branch aux = rightBranch;
         while(aux.getRightBranch() != null){
@@ -79,6 +106,13 @@ public class Branch{
             aux = aux.getLeftBranch();
         }
         return aux;
+    }
+
+    public boolean isLeaf(){
+        if(leftBranch == null && rightBranch == null){
+            return true;
+        }
+        return false;
     }
 
     @Override

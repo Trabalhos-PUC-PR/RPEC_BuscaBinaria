@@ -12,11 +12,7 @@ public class BinaryTree {
         root = new Branch(list[0]);
         for(int i : list){
             if(i != root.getValue()){
-                Branch aux = root;
-                while(aux.getNextBranch(i) != null){
-                    aux = aux.getNextBranch(i);
-                }
-                aux.setNextBranch(i);
+                add(i);
             }
         }
     }
@@ -27,6 +23,7 @@ public class BinaryTree {
             aux = aux.getNextBranch(value);
         }
         aux.setNextBranch(value);
+        aux.getNextBranch(value).setRoot(aux);
     }
 
     public void add(int[] list){
@@ -50,16 +47,30 @@ public class BinaryTree {
         }
     }
 
-    public void remove(Branch value){
-        System.out.println(value.getValue());
+    public void remove(Branch branch){
+        if(branch.isLeaf()){
+            branch.getRoot().setNextBranch(branch.getValue(), null);
+        }else{
+            try{
+                System.out.println(branch.getFullLeftBranch().getValue());
+            }catch(NullPointerException e){
+
+            }
+        }
     }
 
     public void removeBiggestElement(){
+        System.out.println("bef"+root.getFullRightBranch());
         remove(root.getFullRightBranch());
+        System.out.println("aft"+root.getFullRightBranch());
+        System.out.println();
     }
 
     public void removeLowestElement(){
+        System.out.println("bef"+root.getFullLeftBranch());
         remove(root.getFullLeftBranch());
+        System.out.println("aft"+root.getFullLeftBranch());
+        System.out.println();
     }
 
 }
